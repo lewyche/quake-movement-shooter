@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://enemy.gd" type="Script" id=1]
+[ext_resource path="res://umph-47201.mp3" type="AudioStream" id=2]
+
+[sub_resource type="BoxShape" id=3]
+
+[sub_resource type="CubeMesh" id=2]
+
+[node name="enemy" type="KinematicBody" groups=["enemy"]]
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 0.516261, 0, 0, 0, 0.977751, 0, 0, 0, 0.547361, 0, 0, 0 )
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 0.521866, 0, 0, 0, 0.970868, 0, 0, 0, 0.536824, 0, 0, 0 )
+mesh = SubResource( 2 )
+
+[node name="umph" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 2 )
+unit_db = 3.0

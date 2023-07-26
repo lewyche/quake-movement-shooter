@@ -1,0 +1,473 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Character/Quake3-movement-3.gd" type="Script" id=1]
+[ext_resource path="res://Character/jump1.wav" type="AudioStream" id=2]
+[ext_resource path="res://shithair.png" type="Texture" id=3]
+[ext_resource path="res://gun.tscn" type="PackedScene" id=4]
+[ext_resource path="res://gun.gd" type="Script" id=5]
+[ext_resource path="res://shotgun-firing-4-6746.mp3" type="AudioStream" id=6]
+
+[sub_resource type="CapsuleMesh" id=4]
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:mesh")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ SubResource( 4 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("..:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0.519368, -0.257375, -0.681844 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../../Camera:fov")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 70.0 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Spin"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, -90.4356, 0 ), Vector3( 0, -179.791, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "aim"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.519368, -0.257375, -0.681844 ), Vector3( -0.0109509, -0.257375, -0.681844 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../Camera:fov")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 70.0, 40.0 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "unaim"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -0.0253472, -0.257375, -0.681844 ), Vector3( 0.519, -0.257, -0.682 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../Camera:fov")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 40.0, 70.0 ]
+}
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.5
+height = 1.5
+
+[sub_resource type="CylinderShape" id=3]
+height = 1.0
+radius = 0.5
+
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Head/Camera:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Head/Camera:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -0.000350058, 0.000606537, 0.000459582 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Head:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 2.1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Head/gun:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0.519718, -0.257115, -0.682304 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body:translation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -0.000350058, 1.19939, 0.000459582 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Head:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("CollisionShape:translation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 1.2101, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("CollisionShape:transform")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Transform( 1, 0, 0, 0, 2.42125, 0, 0, 0, 1, 0, 1.2149, 0 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Body:shape:height")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.5 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("CollisionShape:shape:height")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "crouch"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:shape:height")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.5, 0.9 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionShape:shape:height")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.75 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Head:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 2.1, 0 ), Vector3( 0, 1.64376, 0 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "lean_left"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Head/Camera:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 7 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "lean_right"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Head/Camera:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -7 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "peek_left"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Head:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 2.1, 0 ), Vector3( -0.5, 2.1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Head:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 20 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "peek_right"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Head:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 2.1, 0 ), Vector3( 0.5, 2.1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Head:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -20 ) ]
+}
+
+[node name="Player" type="KinematicBody"]
+script = ExtResource( 1 )
+headPath = NodePath("Head")
+speedReadout = NodePath("Control/readSpeed")
+
+[node name="Head" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0 )
+
+[node name="Camera" type="Camera" parent="Head"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000350058, 0.000606537, 0.000459582 )
+current = true
+
+[node name="aimcast" type="RayCast" parent="Head/Camera"]
+enabled = true
+cast_to = Vector3( 0, 0, -1000 )
+
+[node name="gun" parent="Head" instance=ExtResource( 4 )]
+transform = Transform( 0.0785607, 0, 0, 0, 0.0906499, 0, 0, 0, 0.183019, 0.519368, -0.257375, -0.681844 )
+script = ExtResource( 5 )
+
+[node name="TextureRect" type="TextureRect" parent="Head/gun"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+texture = ExtResource( 3 )
+
+[node name="gun_player" type="AudioStreamPlayer3D" parent="Head/gun"]
+stream = ExtResource( 6 )
+
+[node name="spinner" type="MeshInstance" parent="Head/gun"]
+transform = Transform( 0.999895, 0, 0, 0, 1, 0, 0, 0, 1.00061, -0.212985, 0, -1.34069 )
+mesh = SubResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Head/gun/spinner"]
+anims/RESET = SubResource( 5 )
+anims/Spin = SubResource( 6 )
+anims/aim = SubResource( 7 )
+anims/unaim = SubResource( 8 )
+
+[node name="Timer" type="Timer" parent="Head/gun"]
+one_shot = true
+
+[node name="Body" type="CollisionShape" parent="."]
+transform = Transform( 1.00135, 0, 0, 0, -1.63141e-07, 1.00135, 0, -1.00135, -1.63141e-07, -0.000350058, 1.19939, 0.000459582 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 2.42125, 0, 0, 0, 1, 0, 1.2149, 0 )
+shape = SubResource( 3 )
+
+[node name="Control" type="Control" parent="."]
+margin_right = 459.0
+margin_bottom = 120.0
+
+[node name="Speed" type="Label" parent="Control"]
+margin_right = 81.0
+margin_bottom = 22.0
+text = "Speed: "
+
+[node name="readSpeed" type="Label" parent="Control"]
+margin_left = 45.0
+margin_top = 1.0
+margin_right = 250.0
+margin_bottom = 78.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_default_blend_time = 0.09
+anims/RESET = SubResource( 11 )
+anims/crouch = SubResource( 12 )
+anims/lean_left = SubResource( 9 )
+anims/lean_right = SubResource( 10 )
+anims/peek_left = SubResource( 13 )
+anims/peek_right = SubResource( 14 )

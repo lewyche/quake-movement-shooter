@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://bullethole.png" type="Texture" id=1]
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_texture = ExtResource( 1 )
+uv1_scale = Vector3( 3, 2, 1 )
+
+[node name="bullethole" type="MeshInstance"]
+transform = Transform( 0.108328, 0, 0, 0, 0.108328, 0, 0, 0, 0.01, 0.00446826, 3.57628e-07, -0.00150776 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
