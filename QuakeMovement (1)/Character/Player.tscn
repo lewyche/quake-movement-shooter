@@ -261,6 +261,18 @@ tracks/9/keys = {
 "update": 0,
 "values": [ 1.0 ]
 }
+tracks/10/type = "value"
+tracks/10/path = NodePath("Head/gun:rotation_degrees")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
 
 [sub_resource type="Animation" id=12]
 resource_name = "crouch"
@@ -336,7 +348,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=13]
 resource_name = "peek_left"
-length = 0.5
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Head:translation")
 tracks/0/interp = 1
@@ -344,27 +356,39 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector3( 0, 2.1, 0 ), Vector3( -0.5, 2.1, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Head:rotation_degrees")
+tracks/1/path = NodePath("Head/Camera:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 20 ) ]
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 30 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Head/gun:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 30 ) ]
 }
 
 [sub_resource type="Animation" id=14]
 resource_name = "peek_right"
-length = 0.5
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Head:translation")
 tracks/0/interp = 1
@@ -372,22 +396,34 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector3( 0, 2.1, 0 ), Vector3( 0.5, 2.1, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Head:rotation_degrees")
+tracks/1/path = NodePath("Head/Camera:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -20 ) ]
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -30 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Head/gun:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -30 ) ]
 }
 
 [node name="Player" type="KinematicBody"]
@@ -407,7 +443,7 @@ enabled = true
 cast_to = Vector3( 0, 0, -1000 )
 
 [node name="gun" parent="Head" instance=ExtResource( 4 )]
-transform = Transform( 0.0785607, 0, 0, 0, 0.0906499, 0, 0, 0, 0.183019, 0.519368, -0.257375, -0.681844 )
+transform = Transform( 0.0785607, 0, 0, 0, 0.0906499, 0, 0, 0, 0.183019, 0.519718, -0.257115, -0.682304 )
 script = ExtResource( 5 )
 
 [node name="TextureRect" type="TextureRect" parent="Head/gun"]

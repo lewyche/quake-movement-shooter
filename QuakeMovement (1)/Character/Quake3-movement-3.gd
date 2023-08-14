@@ -52,6 +52,8 @@ func _physics_process(delta):
 	
 	#non_legacy code------------------------------------------
 	
+	print($Head.rotation_degrees)
+	
 	if Input.is_action_just_pressed("ui_left") :
 		animation.play("lean_left")
 	
